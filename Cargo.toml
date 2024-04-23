@@ -1,0 +1,34 @@
+[package]
+name = "medion"
+version = "0.1.0"
+edition = "2018"
+license = "Apache-2.0 OR MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0"
+walkdir = "2.3"
+structopt = "0.3"
+image = { version = "0.23", default-features = false, features = ["png"] }
+regex = "1.3"
+rayon = "1.3"
+png = "0.16"
+
+[dev-dependencies]
+criterion = "0.3"
+
+[profile.release]
+lto = true
+codegen-units = 1
+
+[[bench]]
+name = "median"
+harness = false
+
+[lib]
+bench = false
+
+[[bin]]
+name = "medion"
+bench = false
